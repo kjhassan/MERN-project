@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 
 import authroutes from "./routes/auth.route.js";
+import connectdb from "./database/mongodbconnection.js";
 
 dotenv.config();  //so gurll this for loading the environment variables from.env file
 
@@ -16,5 +17,13 @@ app.get('/', (req, res) => {
 app.use("/api/auth",authroutes)
 
 
-app.listen(PORT, () => 
-  console.log('Server running on port', PORT));
+app.listen(PORT, () => {
+  
+  connectdb();
+  console.log('Server running on port', PORT);
+  
+});
+  
+
+
+//http://localhost:5000/
