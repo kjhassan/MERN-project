@@ -22,7 +22,7 @@
 // };
 // export default Conversations;
 
-import Conversation from "./Conversation";
+import Conversation from "./conversation";
 
 const Conversations = () => {
 	return (
