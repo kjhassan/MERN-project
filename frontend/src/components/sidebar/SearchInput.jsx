@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { IoSearchSharp } from "react-icons/io5";
+import { MdCancel } from "react-icons/md";
 import useConversation from "../../zustand/useConversation";
 import useGetConversations from "../../hooks/useGetConversations";
 import toast from "react-hot-toast";
@@ -8,6 +9,11 @@ const SearchInput = () => {
 	const [search, setSearch] = useState("");
 	const { setSelectedConversation } = useConversation();
 	const { conversations } = useGetConversations();
+
+	const handleCancel = () => {
+		setSearch("");
+        setSelectedConversation(null);
+	}
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -34,6 +40,9 @@ const SearchInput = () => {
 			/>
 			<button type='submit' className='btn btn-circle bg-sky-500 text-white'>
 				<IoSearchSharp className='w-6 h-6 outline-none' />
+			</button>
+			<button onClick={handleCancel} type='button' className='btn btn-circle bg-sky-500 text-white'>
+				<MdCancel className='w-6 h-6 outline-none' />
 			</button>
 		</form>
 	);
