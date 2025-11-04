@@ -10,6 +10,7 @@ const SignUp = () => {
 		password: "",
 		confirmPassword: "",
 		gender: "",
+		contactno: "",
 	});
 
 	const { loading, signup } = useSignup();
@@ -82,6 +83,20 @@ const SignUp = () => {
 							onChange={(e) => setInputs({ ...inputs, confirmPassword: e.target.value })}
 						/>
 					</div>
+
+					<div>
+						<label className='label'>
+							<span className='text-base label-text'>Contactno</span>
+						</label>
+						<input
+							type='int'
+							placeholder='enter contact no'
+							className='w-full input input-bordered h-10'
+							value={inputs.contactno}
+							onChange={(e) => setInputs({ ...inputs, contactno: e.target.value })}
+						/>
+					</div>
+
 
 					<GenderCheckbox onCheckboxChange={handleCheckboxChange} selectedGender={inputs.gender} />
 

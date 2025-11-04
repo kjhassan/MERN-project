@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  backend:
+    build: ./backend
+    container_name: backend_server
+    restart: always
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./backend/.env  
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+
+  frontend:
+    build: ./frontend
+    container_name: frontend_ui
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend

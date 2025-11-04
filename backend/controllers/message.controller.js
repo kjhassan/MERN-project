@@ -1,6 +1,6 @@
 import Conversation from "../db_models/conversation.model.js";
 import Message from "../db_models/message.model.js";
-import mongoose from "mongoose";
+
 
 
 export const sendMessage = async (req, res) => {

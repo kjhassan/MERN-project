@@ -23,6 +23,11 @@ const userSchema = new mongoose.Schema({
         required:true,
         enum:['male','female']
     },
+    contactno:{
+        type:Number,
+        required:true,
+        unique:true
+    },
     profilePic:{
         type:String,
         default:""
