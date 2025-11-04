@@ -1,23 +1,55 @@
+# version: "3.8"
+
+# services:
+#   backend:
+#     build: ./backend
+#     container_name: backend_server
+#     restart: always
+#     ports:
+#       - "5000:5000"
+#     env_file:
+#       - ./backend/.env  
+#     environment:
+#       - NODE_ENV=production
+#       - PORT=5000
+
+#   frontend:
+#     build: ./frontend
+#     container_name: frontend_ui
+#     restart: always
+#     ports:
+#       - "3000:80"
+#     depends_on:
+#       - backend
+
 version: "3.8"
 
 services:
   backend:
-    build: ./backend
-    container_name: backend_server
+    image: node:18-alpine
+    container_name: backend_server_part2
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+    command: ["npm", "start"]
     restart: always
     ports:
-      - "5000:5000"
+      - "6000:5000"      # changed port
     env_file:
-      - ./backend/.env  
+      - ./backend/.env
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
       - PORT=5000
 
   frontend:
-    build: ./frontend
-    container_name: frontend_ui
+    image: node:18-alpine
+    container_name: frontend_ui_part2
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    command: ["npm", "run", "dev"]
     restart: always
     ports:
-      - "3000:80"
+      - "4000:5173"      # changed port (assuming Vite dev server)
     depends_on:
       - backend
