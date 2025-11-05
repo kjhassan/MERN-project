@@ -58,27 +58,16 @@
 version: "3.8"
 
 services:
-  backend:
+  chat_app:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: backend_server_part2
+    container_name: chat_app
     ports:
       - "6000:5000"
     env_file:
       - ./backend/.env
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
       - PORT=5000
-    restart: always
-
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    container_name: frontend_ui_part2
-    ports:
-      - "4000:80"
-    depends_on:
-      - backend
     restart: always
